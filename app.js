@@ -1,17 +1,8 @@
 const Koa = require('koa')
-const KoaRouter = require('koa-router')
+const InitManager = require('./code/init')
 const app = new Koa()
-const router = new KoaRouter()
 
 // 应用程序对象 中间件
-app.use(async ctx => {
-  ctx.body = ctx.path
-})
-
-app.use(router.routes()).use(router.allowedMethods())
-
-module.exports = {
-  router
-}
+InitManager.initCore(app)
 
 app.listen(3000, () => console.log('http://localhost:3000'))
