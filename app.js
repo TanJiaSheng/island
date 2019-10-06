@@ -8,6 +8,10 @@ app.use(async ctx => {
   ctx.body = ctx.path
 })
 
-app.listen(3000, () => {
-  console.log('http://localhost:3000')
-})
+app.use(router.routes()).use(router.allowedMethods())
+
+module.exports = {
+  router
+}
+
+app.listen(3000, () => console.log('http://localhost:3000'))
