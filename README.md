@@ -1,4 +1,4 @@
-# node + Koa2 + Sequelize + Mysql实现后条API开发
+# node + Koa2 + Sequelize + Mysql实现后台API开发
 
 ## 下载依赖
 
