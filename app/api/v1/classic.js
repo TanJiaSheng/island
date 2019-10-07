@@ -13,5 +13,17 @@ router.post('/v1/:id/classic/latest', (ctx, next) => {
     headers,
     body
   }
+  throw new Error('API Exception')
+  // AOP 面向切面编程
+  // 监听错误
+  // 输出一段有意义的提示信息
+
+  // Koa 中间件
+
+  // try {
+    
+  // } catch (error) {
+    
+  // }
 })
 module.exports = router
