@@ -6,24 +6,15 @@ router.post('/v1/:id/classic/latest', (ctx, next) => {
   const query = ctx.request.query
   const headers = ctx.request.header
   const body = ctx.request.body
-  ctx.body = {
-    key: 'classic',
-    path,
-    query,
-    headers,
-    body
+  
+  if(1) {
+    // 动态
+    const error = new Error('为什么错误')
+    error.errorCode = 10001
+    error.status = 400
+    error.requestUrl = `${ ctx.method } ${ ctx.path }`
+    throw error
   }
-  throw new Error('API Exception')
-  // AOP 面向切面编程
-  // 监听错误
-  // 输出一段有意义的提示信息
-
-  // Koa 中间件
-
-  // try {
-    
-  // } catch (error) {
-    
-  // }
+  
 })
 module.exports = router
