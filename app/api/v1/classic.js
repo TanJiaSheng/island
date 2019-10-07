@@ -1,6 +1,8 @@
 const KoaRouter = require('koa-router')
 const router = new KoaRouter()
 
+const HttpException = require('../../../code/http-exception')
+
 router.post('/v1/:id/classic/latest', (ctx, next) => {
   const path = ctx.params
   const query = ctx.request.query
@@ -9,10 +11,8 @@ router.post('/v1/:id/classic/latest', (ctx, next) => {
   
   if(1) {
     // 动态
-    const error = new Error('为什么错误')
-    error.errorCode = 10001
-    error.status = 400
-    error.requestUrl = `${ ctx.method } ${ ctx.path }`
+    const error = new HttpException('服务器内部错误', 10001, 400)
+    // error.requestUrl = `${ ctx.method } ${ ctx.path }`
     throw error
   }
   
