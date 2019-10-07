@@ -1,9 +1,9 @@
-const HttpException = require('../code/http-exception')
+const {HttpException, ParameterException} = require('../code/http-exception')
 const catchError = async (ctx, next) => {
   try {
     await next()
   } catch (error) {
-    if(error instanceof HttpException) {
+    if(error instanceof ParameterException) {
       ctx.body = {
         msg: error.msg,
         error_code: error.errorCode,
