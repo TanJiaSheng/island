@@ -1,7 +1,7 @@
 const KoaRouter = require('koa-router')
 const router = new KoaRouter()
 
-const { HttpException, ParameterException } = require('../../../code/http-exception')
+const { PositiveIntegerValidator } = require('../../validators/validator')
 
 router.post('/v1/:id/classic/latest', (ctx, next) => {
   const path = ctx.params
@@ -9,10 +9,10 @@ router.post('/v1/:id/classic/latest', (ctx, next) => {
   const headers = ctx.request.header
   const body = ctx.request.body
   
-  if(1) {
-    const error = new ParameterException()
-    throw error
-  }
+  // 校验
+  const v = new PositiveIntegerValidator().validate(ctx)
+  const id = v.get('path.id')
+  ctx.body = id
   
 })
 module.exports = router
