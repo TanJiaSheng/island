@@ -1,4 +1,5 @@
 const { Rule, LinValidator } = require('../../core/lin-validator')
+const { User } = require('../models/user')
 
 class PositiveIntegerValidator extends LinValidator {
   constructor() {
@@ -37,6 +38,18 @@ class RegisterValidator extends LinValidator {
     if(psw1 !== psw2) {
       throw new Error('两次输入密码必须相同')
     }
+  }
+
+  async validateEmail(vals) {
+    const email = vals.body.email
+    const user = await User.findOne({
+      where: {
+        email: email
+      }
+    })
+  }
+  if(user) {
+    throw new Error('email已存在')
   }
 }
 module.exports = {
