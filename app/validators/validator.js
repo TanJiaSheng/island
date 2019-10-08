@@ -1,4 +1,4 @@
-const { Rule, LinValidator } = require('../../core/lin-validator')
+const { Rule, LinValidator } = require('../../core/lin-validator-v2')
 const { User } = require('../models/user')
 
 class PositiveIntegerValidator extends LinValidator {
@@ -47,9 +47,9 @@ class RegisterValidator extends LinValidator {
         email: email
       }
     })
-  }
-  if(user) {
-    throw new Error('email已存在')
+    if(user) {
+      throw new Error('email已存在')
+    }
   }
 }
 module.exports = {

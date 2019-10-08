@@ -11,7 +11,7 @@ router.post('/register', async (ctx) => {
   // 思维路径
   // 接收参数 LinValidator
   // email password1 password2 nickname
-  const v = new RegisterValidator().validate(ctx)
+  const v = await new RegisterValidator().validate(ctx)
   // 获取数据
   // v.get
   const user = {
