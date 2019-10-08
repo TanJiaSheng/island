@@ -52,6 +52,8 @@ class RegisterValidator extends LinValidator {
     }
   }
 }
+
+
 module.exports = {
   PositiveIntegerValidator,
   RegisterValidator
