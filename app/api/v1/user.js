@@ -23,7 +23,7 @@ router.post('/register', async (ctx) => {
   }
   
   // 插入数据库
-  const r = await User.create(user)
+  await User.create(user)
 
   // 返回数据给客户端
   // throw new global.errs.Success()
