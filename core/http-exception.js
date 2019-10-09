@@ -55,5 +55,6 @@ module.exports = {
   ParameterException,
   Success,
   NotFound,
-  AuthFailed
+  AuthFailed,
+  Forbbiden
 }
