@@ -96,3 +96,7 @@ module.exports = InitManager
 ```
 
 [文档链接](https://www.npmjs.com/package/require-directory)
+
+
+
+
