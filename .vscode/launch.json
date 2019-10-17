@@ -14,18 +14,12 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
-
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/app.js"
-    },
     {
       "type": "node",
       "request": "launch",
       "name": "当前文件",
-      "program": "${file}"
-    }
+      "program": "${fiel}"
+    },
+
   ]
 }

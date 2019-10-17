@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 const { Sequelize, Model } = require('sequelize')
 
-const { sequelize } = require('../../core/db')
+const { sequelize } = require('@db')
 
 class User extends Model {
   static async verifyEmailPassword(email, plainPassword) {
@@ -66,7 +66,7 @@ User.init({
   }
 }, {
   sequelize,
-  tableName: 'users'
+  tableName: 'user'
 })
 
 module.exports = {

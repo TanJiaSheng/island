@@ -20,9 +20,20 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "lodash": "^4.17.15",
+    "module-alias": "^2.2.2",
     "mysql2": "^1.7.0",
     "require-directory": "^2.1.1",
     "sequelize": "^5.19.4",
     "validator": "^11.1.0"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@models": "app/models",
+    "@core": "core",
+    "@middlewares": "middlewares",
+    "@validator": "app/validators/validator.js",
+    "@services": "app/services",
+    "@lib": "app/lib",
+    "@db": "core/db.js"
   }
 }

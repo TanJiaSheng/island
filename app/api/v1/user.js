@@ -1,9 +1,9 @@
 const bcrypt = require('bcryptjs')
 const KoaRouter = require('koa-router')
 
-const { RegisterValidator } = require('../../validators/validator')
-const { User } = require('../../models/user')
-const { success } = require('../../../app/lib/helper')
+const { RegisterValidator } = require('@validator')
+const { User } = require('@models/user')
+const { success } = require('@lib/helper')
 
 const router = new KoaRouter( {
   prefix: '/v1/user'
