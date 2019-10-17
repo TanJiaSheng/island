@@ -91,6 +91,28 @@ class NotEmptyValidator extends LinValidator {
   }
 }
 
+function check(vals) {
+  let type = vals.body.type || vals.path.type
+  if(!type) {
+    throw new Error('type是必须参数')
+  }
+  type = parseInt(type)
+  if(!LoginType.isThisType(type)) {
+    throw new Error('type参数不合法')
+  }
+}
+
+function checkArtType(vals) {
+  let type = vals.body.type || vals.path.type
+  if(!type) {
+    throw new Error('type是必须参数')
+  }
+  type = parseInt(type)
+  if(!ArtType.isThisType(type)) {
+    throw new Error('type参数不合法')
+  }
+}
+
 class Checker {
   constructor(type) {
     this.enumType = type
@@ -110,8 +132,9 @@ class Checker {
 class LikeValidator extends PositiveIntegerValidator {
   constructor() {
     super()
-    const checker = new Checker(ArtType)
-    this.validateType = checker.check.bind(checker)
+    this.validateType = checkArtType
+    // const checker = new Checker(ArtType)
+    // this.validateType = checker.check.bind(checker)
   }
 }
 
