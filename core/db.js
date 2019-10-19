@@ -1,4 +1,12 @@
-const Sequelize = require('sequelize')
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-10-08 13:50:33
+ * @LastEditTime: 2019-10-19 14:46:41
+ * @LastEditors: Please set LastEditors
+ */
+const { Sequelize, Model } = require('sequelize')
+const { unset, clone } = require('lodash')
 // 导入数据配置
 const {
   dbName,
@@ -29,6 +37,16 @@ const sequelize = new Sequelize(dbName, user, password, {
     }
   }
 })
+
+// json 序列化
+Model.prototype.toJSON= function() {
+  // let data = this.dataValues
+  let data = clone(this.dataValues)
+  unset(data, 'updatedAt')
+  unset(data, 'deletedAt')
+  unset(data, 'createdAt')
+  return data
+}
 
 sequelize.sync({
   force: false // 自动删除原来表，重新创建新的表

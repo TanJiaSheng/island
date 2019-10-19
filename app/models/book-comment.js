@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: jsTan
  * @Date: 2019-10-18 17:21:03
- * @LastEditTime: 2019-10-19 14:29:37
+ * @LastEditTime: 2019-10-19 14:46:31
  * @LastEditors: Please set LastEditors
  */
 const { Sequelize, Model, Op } = require('sequelize')
@@ -40,13 +40,13 @@ class Comment extends Model {
       })
     }
   }
-
-  toJSON() {
+// json 序列化
+ /*  toJSON() {
     return {
       content: this.getDataValue('content'),
       nums: this.getDataValue('nums')
     }
-  }
+  } */
 }
 
 Comment.init({
