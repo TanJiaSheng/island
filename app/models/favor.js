@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: jsTan
+ * @Date: 2019-10-14 10:21:05
+ * @LastEditTime: 2019-10-18 15:38:57
+ * @LastEditors: Please set LastEditors
+ */
 const { Sequelize, Model, Op } = require('sequelize')
 const { sequelize } = require('@db')
 const { Art } = require('./art')
@@ -80,6 +87,25 @@ class Favor extends Model {
       throw new global.errs.NotFound()
     }
     return await Art.getList(arts)
+  }
+
+  static async getBookFavor(uid, bookID) {
+    const favorNums = await Favor.count({
+      where: {
+        art_id: bookID,
+        type: 400
+      }
+    })
+    const myFavor = await Favor.findOne({
+      art_id: bookID,
+      uid,
+      type: 400
+    })
+
+    return {
+      fav_nums: favorNums,
+      like_status: myFavor ? 1 : 0
+    }
   }
 }
 

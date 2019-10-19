@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-10-12 14:43:08
+ * @LastEditTime: 2019-10-12 14:43:08
+ * @LastEditors: your name
+ */
 const { Sequelize, Model } = require('sequelize')
 const { sequelize } = require('@db')
 
@@ -6,7 +13,10 @@ const classicFields = {
   image: Sequelize.STRING,
   content: Sequelize.STRING,
   pubdate: Sequelize.DATEONLY,
-  fav_nums: Sequelize.STRING,
+  fav_nums: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
   title: Sequelize.STRING,
   type: Sequelize.STRING,
 }
