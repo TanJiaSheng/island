@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-10-06 11:19:13
- * @LastEditTime: 2019-10-19 14:16:40
+ * @LastEditTime: 2019-10-21 15:50:57
  * @LastEditors: Please set LastEditors
  */
 const KoaRouter = require('koa-router')
@@ -35,8 +35,8 @@ router.get('/hot_list', async (ctx, next) => {
  */
 router.get('/:id/detail', async ctx => {
   const v = await new PositiveIntegerValidator().validate(ctx)
-  const book = new Book(v.get('path.id'))
-  ctx.body = await book.detail() 
+  const book = new Book()
+  ctx.body = await book.detail(v.get('path.id')) 
 })
 
 /**
@@ -85,8 +85,12 @@ router.get('/search', async ctx => {
       id: 'book_id'
     })
     
-    const comments = await Comment.getComments(v.get('path.book_id'))
-    ctx.body = comments
+    const book_id = v.get('path.book_id')
+    const comments = await Comment.getComments(book_id)
+    ctx.body = {
+      comments,
+      book_id
+    }
   })
 
   router.get('/hot_keyword', async ctx => {

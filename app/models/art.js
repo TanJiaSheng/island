@@ -1,21 +1,28 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-10-12 17:27:46
+ * @LastEditTime: 2019-10-21 17:26:17
+ * @LastEditors: Please set LastEditors
+ */
 const { Op } = require('sequelize')
 const { flatten } = require('lodash')
 const { Movie, Music, Sentence } = require('@models/classic')
 
 class Art {
 
-  constructor(art_id, type) {
-    this.art_id = art_id
-    this.type = type 
-  }
+  // constructor(art_id, type) {
+  //   this.art_id = art_id
+  //   this.type = type 
+  // }
 
-  async getDetail(uid) {
+  async getDetail(art_id, type,uid) {
     const { Favor } = require('@models/favor')
-    const art = await Art.getData(this.art_id, this.type)
+    const art = await Art.getData(art_id, type)
     if(!art) {
       throw new global.errs.NotFound()
     }
-    const like = await Favor.userLikeIt(this.art_id, this.type, uid)
+    const like = await Favor.userLikeIt(art_id, type, uid)
     return {
       art,
       like_status: like
@@ -40,12 +47,21 @@ class Art {
         art = await Sentence.scope(scope).findOne(finder)
         break
       case 400:
-      
+        const { Book } = require('./book')
+        art = await Book.scope(scope).findOne(finder)
+        if(!art) {
+          art = await Book.create({
+            id: art_id
+          })
+        }
         break
-    
       default:
         break
     }
+    // if(art && art.image) {
+    //   let imgUrl = art.dataValues.image
+    //   art.dataValues.image = global.config.host + imgUrl
+    // }
     return art
   }
 
@@ -96,7 +112,7 @@ class Art {
         arts = await Sentence.scope(scope).findAll(finder)
         break
       case 400:
-      
+
         break
     
       default:

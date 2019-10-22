@@ -2,11 +2,11 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-10-08 13:50:33
- * @LastEditTime: 2019-10-19 14:46:41
+ * @LastEditTime: 2019-10-21 17:29:23
  * @LastEditors: Please set LastEditors
  */
 const { Sequelize, Model } = require('sequelize')
-const { unset, clone } = require('lodash')
+const { unset, clone, isArray } = require('lodash')
 // 导入数据配置
 const {
   dbName,
@@ -45,6 +45,20 @@ Model.prototype.toJSON= function() {
   unset(data, 'updatedAt')
   unset(data, 'deletedAt')
   unset(data, 'createdAt')
+
+  for(key in data) {
+    if(key === 'image') {
+      if(!data[key].startsWith('http')) {
+        data[key] = global.config.host + data[key]
+      }
+    }
+  }
+
+  if(isArray(this.exclude)) {
+    this.exclude.forEach(value => {
+      unset(data, value)
+    })
+  }
   return data
 }
 

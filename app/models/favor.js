@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: jsTan
  * @Date: 2019-10-14 10:21:05
- * @LastEditTime: 2019-10-18 15:38:57
+ * @LastEditTime: 2019-10-21 14:48:22
  * @LastEditors: Please set LastEditors
  */
 const { Sequelize, Model, Op } = require('sequelize')
@@ -97,9 +97,11 @@ class Favor extends Model {
       }
     })
     const myFavor = await Favor.findOne({
-      art_id: bookID,
-      uid,
-      type: 400
+      where: {
+        art_id: bookID,
+        uid,
+        type: 400
+      }
     })
 
     return {

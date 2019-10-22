@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2019-10-17 15:09:15
+ * @LastEditTime: 2019-10-21 15:09:57
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /f:\Project\node\isLand\island\app\models\hot-book.js
+ */
 const { Sequelize, Model, Op } = require('sequelize')
 const { sequelize } = require('@db')
 const { Favor } = require('./favor')
@@ -18,9 +26,9 @@ class HotBook extends Model {
     const favors = await Favor.findAll({
       where: {
         art_id: {
-          [Op.in]: ids,
-          type: 400
-        }
+          [Op.in]: ids
+        },
+        type: 400
       },
       group: ['art_id'],
       attributes: ['art_id', [Sequelize.fn('COUNT', '*'), 'count']]
@@ -38,7 +46,7 @@ class HotBook extends Model {
         count = favor.get('count')
       }
     })
-    book.setDataValue('count', count)
+    book.setDataValue('fav_nums', count)
     return book
   }
 }

@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: jsTan
  * @Date: 2019-10-18 17:21:03
- * @LastEditTime: 2019-10-19 14:46:31
+ * @LastEditTime: 2019-10-19 14:59:32
  * @LastEditors: Please set LastEditors
  */
 const { Sequelize, Model, Op } = require('sequelize')
@@ -48,6 +48,8 @@ class Comment extends Model {
     }
   } */
 }
+
+// Comment.prototype.exclude = ['book_id', 'id']
 
 Comment.init({
   content: Sequelize.STRING(50),

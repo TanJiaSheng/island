@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-10-06 11:19:24
+ * @LastEditTime: 2019-10-21 13:59:11
+ * @LastEditors: Please set LastEditors
+ */
 const KoaRouter = require('koa-router')
 const router = new KoaRouter({
   prefix: '/v1/classic'
@@ -24,6 +31,8 @@ router.get('/latest', new Auth().m, async (ctx, next) => {
   // art.dataValues.index = flow.index
   art.setDataValue('index', flow.index)
   art.setDataValue('likeStatus', userLatest)
+  // 排除字段
+  // art.exclude = ['index']
   ctx.body = art
   // 序列化 对象 json
 })
@@ -97,13 +106,7 @@ router.get('/:type/:id/favor', new Auth().m, async ctx => {
   const id = v.get('path.id')
   const type = parseInt(v.get('path.type'))
 
-  /* const art = await Art.getData(id, type)
-  if(!art) {
-    throw new global.errs.NotFound()
-  }
-  const like = await Favor.userLikeIt(id, type, ctx.auth.uid) */
-
-  const artDetail = await new Art(id, type).getDetail(ctx.auth.uid)
+  const artDetail = await new Art().getDetail(id, type, ctx.auth.uid)
   let { art, like_status } = artDetail
 
   ctx.body = {
