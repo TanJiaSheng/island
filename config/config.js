@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-10-08 11:21:03
- * @LastEditTime: 2019-10-23 09:06:02
+ * @LastEditTime: 2019-10-23 16:50:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \island\config\config.js
@@ -29,5 +29,5 @@ module.exports = {
     detailUrl:'http://t.yushu.im/v2/book/id/%s',
     keywordUrl:'http://t.yushu.im/v2/book/search?q=%s&count=%s&start=%s&summary=%s'
   },
-  host:'http://localhost:3000/'
+  host:'http://www.choant.com/'
 }
