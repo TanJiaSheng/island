@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-10-08 13:50:33
- * @LastEditTime: 2019-10-21 17:29:23
+ * @LastEditTime: 2019-10-23 13:55:42
  * @LastEditors: Please set LastEditors
  */
 const { Sequelize, Model } = require('sequelize')
@@ -20,7 +20,7 @@ const sequelize = new Sequelize(dbName, user, password, {
   dialect: 'mysql', // 定义链接的数据库
   host,
   port,
-  logging: true, // 命令行显示sql语句
+  logging: false, // 命令行显示sql语句
   timezone: '+08:00',
   define: {
     // create_time update_time delete_time

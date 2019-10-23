@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2019-10-08 11:21:03
+ * @LastEditTime: 2019-10-23 09:06:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \island\config\config.js
+ */
 module.exports = {
   // prod
   environment: 'dev',
