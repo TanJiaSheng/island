@@ -1,10 +1,3 @@
-/*
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-10-08 13:50:33
- * @LastEditTime: 2019-10-23 13:55:42
- * @LastEditors: Please set LastEditors
- */
 const { Sequelize, Model } = require('sequelize')
 const { unset, clone, isArray } = require('lodash')
 // 导入数据配置
@@ -31,7 +24,7 @@ const sequelize = new Sequelize(dbName, user, password, {
     scopes: {
       bh: {
         attributes: {
-          exclude: ['updateAt', 'deletedAt', 'createdAt']
+          exclude: ['update_at', 'deleted_at', 'created_at']
         }
       }
     }
@@ -42,9 +35,9 @@ const sequelize = new Sequelize(dbName, user, password, {
 Model.prototype.toJSON= function() {
   // let data = this.dataValues
   let data = clone(this.dataValues)
-  unset(data, 'updatedAt')
-  unset(data, 'deletedAt')
-  unset(data, 'createdAt')
+  unset(data, 'updated_at')
+  unset(data, 'created_at')
+  unset(data, 'deleted_at')
 
   for(key in data) {
     if(key === 'image') {
